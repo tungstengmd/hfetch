@@ -8,10 +8,16 @@ green="\e[92m"
 yellow="\e[93m"
 reg="\e[95m"
 white="\e[0m"
-printf "  ${green}pc${white} ~ ${host}
-  ${green}os${white} ~ ${PRETTY_NAME}
-  ${green}sh${white} ~ ${SHELL##*/}
-  ${green}wm${white} ~ $(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t | grep '^_NET_WM_NAME' | cut -d\" -f 2)
-  ${green}kr${white} ~ $(uname -r)
+if [[ $ID_LIKE = arch || $ID = arch ]]; then
+    pkgs=`pacman -Q | wc --lines`
+elif [[ $ID = debian || $ID_LIKE = debian ]] then
+    pkgs=`dpkg --list | wc --lines`
+fi
+printf "      ${green}pc${white} ~ ${host}
+      ${green}os${white} ~ ${PRETTY_NAME}
+   ${green}shell${white} ~ ${SHELL##*/}
+      ${green}wm${white} ~ $(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t | grep '^_NET_WM_NAME' | cut -d\" -f 2)
+    ${green}pkgs${white} ~ ${pkgs}
+  ${green}kernel${white} ~ $(uname -r)
   ><> ${reg}welcome to ${green}earth${reg}, ${yellow}${USER}${reg}
 "
