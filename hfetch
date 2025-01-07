@@ -3,7 +3,7 @@ read -r host < /proc/sys/kernel/hostname
 read -r kernel < /proc/sys/kernel/osrelease
 . /etc/os-release
 id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
-id=${id##* }
+id=${id##*/}
 green="\e[92m"
 yellow="\e[93m"
 reg="\e[95m"
