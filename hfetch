@@ -10,6 +10,6 @@ printf "  ${green}pc${white} ~ ${host}
   ${green}sh${white} ~ ${SHELL##*/}
   ${green}wm${white} ~ $(wmctrl -m | head -1 | sed 's/Name\:\ //')
   ${green}kr${white} ~ $(uname -r)
-  ${green}md${white} ~ $(playerctl metadata artist) - $(playerctl metadata title)
+  ${green}md${white} ~ $(playerctl metadata artist) - $(playerctl metadata title) ($(playerctl status))
   ><> ${white}hello, ${yellow}${USER}${white}
 "
