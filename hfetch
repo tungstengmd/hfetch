@@ -2,16 +2,14 @@
 read -r host < /proc/sys/kernel/hostname
 read -r kernel < /proc/sys/kernel/osrelease
 . /etc/os-release
-id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
-id=${id##*}
-green="\e[92m"
-yellow="\e[93m"
-reg="\e[95m"
-white="\e[0m"
+green="[92m"
+yellow="[93m"
+white="[0m"
 printf "  ${green}pc${white} ~ ${host}
   ${green}os${white} ~ ${PRETTY_NAME}
   ${green}sh${white} ~ ${SHELL##*/}
-  ${green}wm${white} ~ $(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t | grep '^_NET_WM_NAME' | cut -d\" -f 2)
+  ${green}wm${white} ~ $(wmctrl -m | head -1 | sed 's/Name\:\ //')
   ${green}kr${white} ~ $(uname -r)
-  ><> ${reg}welcome to ${green}earth${reg}, ${yellow}${USER}${reg}
+  ${green}md${white} ~ $(playerctl metadata artist) - $(playerctl metadata title)
+  ><> ${white}hello, ${yellow}${USER}${white}
 "
