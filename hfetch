@@ -2,14 +2,15 @@
 read -r host < /proc/sys/kernel/hostname
 read -r kernel < /proc/sys/kernel/osrelease
 . /etc/os-release
-green="␛[92m"
-yellow="␛[93m"
-white="␛[0m"
-printf "  ${green}os${white} ~ ${PRETTY_NAME} $(uname -m)
+green="[92m"
+yellow="[93m"
+white="[0m"
+printf "  ${green}pc${white} ~ ${host}
+  ${green}os${white} ~ ${PRETTY_NAME} $(uname -m)
   ${green}sh${white} ~ ${SHELL##*/}
   ${green}wm${white} ~ $(wmctrl -m | head -1 | sed 's/Name\:\ //')
   ${green}kr${white} ~ $(uname -r)
   ${green}md${white} ~ $(playerctl metadata artist) - $(playerctl metadata title) ($(playerctl status))
   ${green}in${white} ~ $(ps -p 1 -o command | sed -n '2p')
-  ><> ${white}USER: ${yellow}${USER}${white} LOGGED INTO ${yellow}${host}${white}; WELCOME!
+  ><> ${white}user: ${yellow}${USER}${white} logged into ${yellow}${host}${white}; welcome!
 "
