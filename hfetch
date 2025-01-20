@@ -5,8 +5,7 @@ read -r kernel < /proc/sys/kernel/osrelease
 green="[92m"
 yellow="[93m"
 white="[0m"
-printf "  ${green}pc${white} ~ ${host}
-  ${green}os${white} ~ ${PRETTY_NAME} $(uname -m)
+printf "  ${green}os${white} ~ ${PRETTY_NAME} $(uname -m)
   ${green}sh${white} ~ ${SHELL##*/}
   ${green}wm${white} ~ $(wmctrl -m | head -1 | sed 's/Name\:\ //')
   ${green}kr${white} ~ $(uname -r)
