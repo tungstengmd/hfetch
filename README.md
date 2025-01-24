@@ -1,6 +1,8 @@
 # hfetch
 ## my fetch (heavily inspired by jfetch)!
-![image](https://github.com/user-attachments/assets/69568f92-f6a9-486a-bc93-b60ca0399147)
+![image](https://github.com/user-attachments/assets/5c2d67a8-4680-4d8a-b8c1-5b9df5182ff7)
+
+<sup><sub>usage demonstration</sub></sup>
 ### what is it?
 hfetch is a dead simple shell script that fetches your sysinfo and displays it cutely!
 ### how do you customise it?
