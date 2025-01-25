@@ -6,13 +6,14 @@ read -r _ MemFull MemFree _ < /proc/meminfo
 green="[92m"
 yellow="[93m"
 white="[0m"
-printf "  ${green}os${white} ~ ${PRETTY_NAME} $(uname -m)
-  ${green}sh${white} ~ ${SHELL##*/}
-  ${green}wm${white} ~ $(wmctrl -m | head -1 | sed 's/Name\:\ //')
-  ${green}kr${white} ~ $(uname -r)
-  ${green}md${white} ~ $(playerctl metadata artist) - $(playerctl metadata title) ($(playerctl status))
-  ${green}in${white} ~ $(ps --no-headers -o comm 1)
-  ${green}up${white} ~ $(uptime -p | sed 's/up\ //')
-  ${green}rm${white} ~ $(vmstat -s -S M | sed -n '2p' | sed 's/\ M\ used\ memory//' | sed 's/\ \ \ \ \ \ \ \ \ //')/$(vmstat -s -S M | sed -n '1p' | sed 's/\ M\ total\ memory//' | sed 's/\ \ \ \ \ \ \ \ \ //')Mb
+printf '%s\n' "
+  ${green}os${white}: ${PRETTY_NAME} $(uname -m)
+  ${green}shell${white}: ${SHELL##*/}
+  ${green}wm${white}: $(wmctrl -m | head -1 | sed 's/Name\:\ //')
+  ${green}kernel${white}: $(uname -r)
+  ${green}media${white}: $(playerctl metadata artist) - $(playerctl metadata title) ($(playerctl status))
+  ${green}init${white}: $(ps --no-headers -o comm 1)
+  ${green}uptime${white}: $(uptime -p | sed 's/up\ //')
+  ${green}ram${white}: $(vmstat -s -S M | sed -n '2p' | sed 's/\ M\ used\ memory//' | sed 's/\ \ \ \ \ \ \ \ \ //')/$(vmstat -s -S M | sed -n '1p' | sed 's/\ M\ total\ memory//' | sed 's/\ \ \ \ \ \ \ \ \ //')Mb
   ><> ${white}user: ${yellow}${USER}${white} logged into ${yellow}${host}${white}; welcome!
 "
