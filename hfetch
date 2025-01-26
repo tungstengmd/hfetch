@@ -14,6 +14,6 @@ printf '%s\n' "
   ${green}media${white}: $(playerctl metadata artist) - $(playerctl metadata title) ($(playerctl status))
   ${green}init${white}: $(ps --no-headers -o comm 1)
   ${green}uptime${white}: $(uptime -p | sed 's/up\ //')
-  ${green}ram${white}: $(vmstat -s -S M | sed -n '2p' | sed 's/\ M\ used\ memory//' | sed 's/\ \ \ \ \ \ \ \ \ //')/$(vmstat -s -S M | sed -n '1p' | sed 's/\ M\ total\ memory//' | sed 's/\ \ \ \ \ \ \ \ \ //')Mb
+  ${green}ram${white}: $(vmstat -s -S M | sed -n '2p' | sed 's/\ M\ used\ memory//' | sed 's/\ //g')/$(vmstat -s -S M | sed -n '1p' | sed 's/\ M\ total\ memory//' | sed 's/\ //g')Mb
   ><> ${white}user: ${yellow}${USER}${white} logged into ${yellow}${host}${white}; welcome!
 "
