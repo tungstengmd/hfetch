@@ -15,5 +15,6 @@ printf '%s\n' "
   ${green}init${white}: $(ps --no-headers -o comm 1)
   ${green}uptime${white}: $(uptime -p | sed 's/up\ //')
   ${green}ram${white}: $(vmstat -s -S M | sed -n '2p' | sed 's/\ M\ used\ memory//' | sed 's/\ //g')/$(vmstat -s -S M | sed -n '1p' | sed 's/\ M\ total\ memory//' | sed 's/\ //g')Mb
+  ${green}trans${white}: rights
   ><> ${white}user: ${yellow}${USER}${white} logged into ${yellow}${host}${white}; welcome!
 "
