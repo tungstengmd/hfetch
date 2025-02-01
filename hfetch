@@ -1,10 +1,13 @@
 #!/bin/sh
-read -r host < /proc/sys/kernel/hostname
-read -r kernel < /proc/sys/kernel/osrelease
 . /etc/os-release
 green="[92m"
 yellow="[93m"
 white="[0m"
+if [ -f /proc/swaps ]; then
+    isswap="yes"
+else
+    isswap="no"
+fi
 printf '%s\n' "
   ${green}os${white}: ${PRETTY_NAME} $(uname -m)
   ${green}pc${white}: $(cat /sys/devices/virtual/dmi/id/product_name) $(cat /sys/devices/virtual/dmi/id/product_version)
@@ -17,5 +20,6 @@ printf '%s\n' "
   ${green}ram${white}: $(vmstat -s -S M | sed -n '2p' | sed 's/\ M\ used\ memory//' | sed 's/\ //g')/$(vmstat -s -S M | sed -n '1p' | sed 's/\ M\ total\ memory//' | sed 's/\ //g')Mb
   ${green}trans${white}: rights
   ${green}lang${white}: $(locale | head -1 | sed 's/LANG=//')
-  ><> ${white}user: ${yellow}${USER}${white} logged into ${yellow}${host}${white}; welcome!
+  ${green}swap${white}: $isswap
+  ><> ${white}user: ${yellow}${USER}${white} logged into ${yellow}$(cat /proc/sys/kernel/hostname)${white}; welcome!
 "
